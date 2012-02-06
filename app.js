@@ -28,7 +28,8 @@ models.defineModels(mongoose, function() {
  // app.User = User = mongoose.model('User');
  // app.LoginToken = LoginToken = mongoose.model('LoginToken');
  // db = mongoose.connect(app.set('db-uri'));
-  db = mongoose.connect('mongodb://localhost/nodepad');
+  //db = mongoose.connect('mongodb://localhost/nodepad');
+  db = mongoose.connect('mongodb://gomino:567340@staff.mongohq.com:10097/nodepad');
 })
 
 app.configure('development', function(){
@@ -106,7 +107,9 @@ app.del('/documents/:id.:format?', function(req, res) {
 
 
 
-app.listen(3000);
+//app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0");
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
 exports.Document = Document;
